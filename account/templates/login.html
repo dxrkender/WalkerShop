@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>WalkerShop | Login</title>
+{% endblock %}
+
+{% block content %}
+  <!-- Main Section-->
+  <section
+      class="mt-0 overflow-hidden d-flex justify-content-center align-items-center">
+    <!-- Page Content Goes Here -->
+    <!-- Login Form-->
+    <div class="col col-md-8 col-lg-6 col-xxl-5">
+      <!-- Logo-->
+      <a class="navbar-brand fw-bold fs-3 flex-shrink-0 order-0 align-self-center justify-content-center d-flex mx-0 px-0"
+         href="../../templates/dist/index.html">
+        <img src="{% static 'svgs/logo-large-black.svg' %}" alt="WalkerShop">
+      </a>
+      <!-- / Logo-->
+      <div class="shadow-xl p-4 p-lg-5 bg-white">
+        <h1 class="text-center fw-bold mb-5 fs-2">Login</h1>
+        <a href="#" class="btn btn-dark d-block mb-5"><img width="32" src="{% static 'svgs/github-mark-white.svg' %}"
+                                                           alt="">
+          &nbsp;&nbsp;&nbsp; Login with GitHub
+        </a>
+        <form action="{{ request.path }}" method="post">
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+            <li>{{ form.non_field_errors }}</li>
+          {% endif %}
+
+          {% for field in form %}
+            <div class="form-group">
+              {% for error in form.errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+              <label for="{{ field.id_for_label }}" class={{ field.field.widget.attrs.label_class }}>
+                {{ field.label }}
+              </label>
+              {{ field }}
+            </div>
+          {% endfor %}
+
+          <button type="submit" class="btn btn-dark d-block w-100 my-4">Login</button>
+          <p class="d-block text-center text-muted">New customer?
+            <a class="text-muted" href="signup.html">Sign up for an account</a>
+          </p>
+        </form>
+      </div>
+
+    </div>
+    <!-- / Login Form-->
+    <!-- /Page Content -->
+  </section>
+  <!-- / Main Section-->
+{% endblock %}
