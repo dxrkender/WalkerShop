@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 
@@ -7,8 +9,8 @@ from account.models import Client
 
 class ForgottenPasswordForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        kwargs["label_suffix"] = ""
         super().__init__(*args, **kwargs)
+        kwargs["label_suffix"] = ""
 
     email = forms.EmailField(
         label='Email Address',
@@ -21,44 +23,41 @@ class ForgottenPasswordForm(forms.Form):
     )
 
 
-class LoginForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.label_classes = {
-            'email_label': 'login-email',
-            'password_label': 'form-label d-flex justify-content-between align-items-center',
-        }
+class LoginForm(AuthenticationForm):
+    class Meta:
+        model = User
+        fields = ('username', 'password')
 
-    email = forms.EmailField(
-        label='Email Address',
-        widget=forms.EmailInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'name@email.com',
-                'label_class': 'form-label',
-            }
-        ),
-    )
-
-    password = forms.CharField(
-        label='Password',
-        widget=forms.PasswordInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'Enter your password',
-                'label_class': 'form-label d-flex justify-content-between align-items-center',
-            }
-        ),
-    )
-
-
-class SignUpForm(forms.Form):
     username = forms.CharField(
         label='Username',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'User123',
+                'placeholder': 'Your username',
+                'label_class': 'form-label',
+            }
+        ),
+    )
+
+    password = forms.CharField(
+        label='Password',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter your password',
+                'label_class': 'form-label d-flex justify-content-between align-items-center',
+            }
+        ),
+    )
+
+
+class SignUpForm(forms.ModelForm):
+    username = forms.CharField(
+        label='Username',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Your username',
                 'label_class': 'form-label',
             }
         ),
@@ -86,7 +85,7 @@ class SignUpForm(forms.Form):
         ),
     )
 
-    repeat_password = forms.CharField(
+    password1 = forms.CharField(
         label='Repeat Password',
         widget=forms.PasswordInput(
             attrs={
@@ -97,10 +96,14 @@ class SignUpForm(forms.Form):
         ),
     )
 
+    class Meta:
+        model = Client
+        fields = ('username', 'email', 'password')
+
     def clean_password(self):
-        password = self.cleaned_data['password']
-        repeat_password = self.cleaned_data['repeat_password']
-        if password != repeat_password:
+        password = self.cleaned_data.get('password')
+        password1 = self.cleaned_data.get('password1')
+        if password and password1 and password != password1:
             ValidationError('Password mismatch.')
         else:
             return True

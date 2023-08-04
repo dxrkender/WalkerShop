@@ -25,13 +25,18 @@
         <form action="{{ request.path }}" method="post">
           {% csrf_token %}
           {% if form.non_field_errors %}
-            <li>{{ form.non_field_errors }}</li>
+            {% for error in form.non_field_errors %}
+              <div class="alert-danger py-2 my-2 text-center">
+                {{ error }}
+              </div>
+            {% endfor %}
           {% endif %}
-
           {% for field in form %}
             <div class="form-group">
-              {% for error in form.errors %}
-                <p>{{ error }}</p>
+              {% for error in field.errors %}
+                <div class="alert-danger py-2 my-2 text-center">
+                    {{ error }}
+                </div>
               {% endfor %}
               <label for="{{ field.id_for_label }}" class={{ field.field.widget.attrs.label_class }}>
                 {{ field.label }}
@@ -42,7 +47,8 @@
 
           <button type="submit" class="btn btn-dark d-block w-100 my-4">Sign Up</button>
         </form>
-        <p class="d-block text-center text-muted">Already registered? <a class="text-muted" href="login.html">Login
+        <p class="d-block text-center text-muted">Already registered? <a class="text-muted"
+                                                                         href="../registration/login.html">Login
           here.</a></p>
       </div>
 
