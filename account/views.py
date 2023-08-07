@@ -40,6 +40,10 @@ class ForgotView(TemplateView):
         context["form"] = form
         return context
 
+    def send_email_to_client(self, *args, **kwargs):
+        # TODO: White services for send email and confirm the token.
+        pass
+
 
 def logout_view(request):
     logout(request)
