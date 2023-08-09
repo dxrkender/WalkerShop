@@ -9,8 +9,8 @@ from account.models import Client
 
 class ForgottenPasswordForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
         kwargs["label_suffix"] = ""
+        super().__init__(*args, **kwargs)
 
     email = forms.EmailField(
         label='Email Address',
@@ -100,10 +100,10 @@ class SignUpForm(forms.ModelForm):
         model = Client
         fields = ('username', 'email', 'password')
 
-    def clean_password(self):
+    def clean_password1(self):
         password = self.cleaned_data.get('password')
         password1 = self.cleaned_data.get('password1')
         if password and password1 and password != password1:
-            ValidationError('Password mismatch.')
+            raise ValidationError('Password mismatch.')
         else:
-            return True
+            return password1

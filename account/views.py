@@ -29,6 +29,8 @@ class ForgotView(TemplateView):
         context = self.get_context_data()
         if context["form"].is_valid():
             redirect('home')
+        #     TODO: you need to write services for approve user email and
+        #           send the email with recovery link to user.
 
         return redirect('forgot', context=context)
 

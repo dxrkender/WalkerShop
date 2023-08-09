@@ -8,12 +8,31 @@ from django.utils.text import slugify
 
 # Create your models here.
 class Client(AbstractUser):
-    username = models.CharField(max_length=256, validators=[MinLengthValidator(5)], unique=True)
-    email = models.EmailField(null=False, max_length=256)
+    username = models.CharField(
+        max_length=256,
+        validators=[MinLengthValidator(limit_value=5)],
+        unique=True,
+        verbose_name='Username',
+    )
+    email = models.EmailField(
+        null=False,
+        max_length=256,
+        verbose_name='Email',
+    )
 
-    slug = models.SlugField()
-    is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(auto_now=True)
+    slug = models.SlugField(
+        verbose_name='Slug',
+    )
+
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name='Activity',
+    )
+
+    date_joined = models.DateTimeField(
+        auto_now=True,
+        verbose_name='Joined at'
+    )
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -21,7 +40,11 @@ class Client(AbstractUser):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("account", kwargs={'slug': self.slug})
+        return reverse("home", kwargs={'slug_id': self.slug})
 
     def __str__(self):
         return f'<User: {self.username} - {self.email} - {self.slug}>'
+
+    class Meta:
+        verbose_name = 'Client'
+        verbose_name_plural = 'Clients'
