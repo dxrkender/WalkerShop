@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'account.apps.AccountConfig',
+    'cart.apps.BasketConfig'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DJANGO_SETTINGS_MODULE = 'WalkerShop.settings'
+
+# https://docs.djangoproject.com/en/4.2/howto/initial-data/#:~:text=A%20fixture%20is%20a%20collection,the%20manage.py%20dumpdata%20command.
+FIXTURE_DIRS = BASE_DIR / 'fixtures/'

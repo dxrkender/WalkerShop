@@ -107,3 +107,10 @@ class SignUpForm(forms.ModelForm):
             raise ValidationError('Password mismatch.')
         else:
             return password1
+
+    def save(self, commit=True):
+        client = super().save(commit=False)
+        client.set_password(self.cleaned_data['password'])
+        if commit:
+            client.save()
+        return client
