@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'account.apps.AccountConfig',
-    'cart.apps.CartConfig'
+    'cart.apps.CartConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,7 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / 'account/templates',
             BASE_DIR / 'cart/templates',
+            BASE_DIR / 'core/templates',
             BASE_DIR / 'templates',
         ],
         'APP_DIRS': True,
@@ -139,4 +141,6 @@ DJANGO_SETTINGS_MODULE = 'WalkerShop.settings'
 # https://docs.djangoproject.com/en/4.2/howto/initial-data/
 FIXTURE_DIRS = [
     BASE_DIR / 'account/fixtures/',
+
+    BASE_DIR / 'core/fixtures/',
 ]
