@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'account.apps.AccountConfig',
+    'cart.apps.CartConfig'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DJANGO_SETTINGS_MODULE = 'WalkerShop.settings'
+
+# https://docs.djangoproject.com/en/4.2/howto/initial-data/
+FIXTURE_DIRS = [
+    BASE_DIR / 'account/fixtures/',
+]
