@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white flex-column border-0  ">
   <div class="container-fluid">
@@ -5,7 +6,7 @@
       <div class="d-flex justify-content-between align-items-center flex-wrap">
 
         <!-- Logo-->
-        <a class="navbar-brand fw-bold fs-3 m-0 p-0 flex-shrink-0 order-0" href="./index.html">
+        <a class="navbar-brand fw-bold fs-3 m-0 p-0 flex-shrink-0 order-0" href="../core/templates/core/index.html">
           <div class="d-flex align-items-center">
             <svg class="f-w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
               <path
@@ -77,46 +78,7 @@
               <!-- Cart Items-->
               <div>
 
-                <!-- Cart Product-->
-                <div class="row mx-0 py-4 g-0 border-bottom">
-                  <div class="col-2 position-relative">
-                    <picture class="d-block ">
-                      <img class="img-fluid" src="../static/images/products/product-cart-1.jpg"
-                           alt="HTML Bootstrap Template by Pixel Rocket">
-                    </picture>
-                  </div>
-                  <div class="col-9 offset-1">
-                    <div>
-                      <h6 class="justify-content-between d-flex align-items-start mb-2">
-                        Nike Air VaporMax 2021
-                        <i class="ri-close-line ms-3"></i>
-                      </h6>
-                      <span class="d-block text-muted fw-bolder text-uppercase fs-9">Size: 9 / Qty: 1</span>
-                    </div>
-                    <p class="fw-bolder text-end text-muted m-0">$85.00</p>
-                  </div>
-                </div>
-                <!-- Cart Product-->
-                <div class="row mx-0 py-4 g-0 border-bottom">
-                  <div class="col-2 position-relative">
-                    <picture class="d-block ">
-                      <img class="img-fluid" src="../static/images/products/product-cart-2.jpg"
-                           alt="HTML Bootstrap Template by Pixel Rocket">
-                    </picture>
-                  </div>
-                  <div class="col-9 offset-1">
-                    <div>
-                      <h6 class="justify-content-between d-flex align-items-start mb-2">
-                        Nike ZoomX Vaporfly
-                        <i class="ri-close-line ms-3"></i>
-                      </h6>
-                      <span class="d-block text-muted fw-bolder text-uppercase fs-9">Size: 11 / Qty: 1</span>
-                    </div>
-                    <p class="fw-bolder text-end text-muted m-0">$125.00</p>
-                  </div>
-                </div>
-              </div>
-              <!-- /Cart Items-->
+                {% include 'core/product_cart.html' %}
 
               <!-- Cart Summary-->
               <div>
@@ -130,13 +92,14 @@
                     <p class="m-0 fs-5 fw-bold">$422.99</p>
                   </div>
                 </div>
-                <a href="../cart/templates/cart.html" class="btn btn-outline-dark w-100 text-center mt-4" role="button">View Cart</a>
-                <a href="../cart/templates/checkout.html" class="btn btn-dark w-100 text-center mt-2" role="button">Proceed To
+                <a href="../cart/templates/cart/cart.html" class="btn btn-outline-dark w-100 text-center mt-4" role="button">View
+                  Cart</a>
+                <a href="../cart/templates/cart/checkout.html" class="btn btn-dark w-100 text-center mt-2" role="button">Proceed
+                  To
                   Checkout</a>
               </div>
               <!-- / Cart Summary-->
             </div>
-
 
           </li>
           <!-- /Navbar Cart Icon-->
@@ -150,7 +113,7 @@
 
           <!-- Menu-->
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown dropdown position-static">
+            <li class="nav-item dropdown position-static">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                  aria-expanded="false">
                 Men
@@ -166,24 +129,32 @@
                         <div class="col">
                           <h6 class="dropdown-heading">Coats & Jackets</h6>
                           <ul class="list-unstyled">
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Waterproof
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Waterproof
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Insulated
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Insulated
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Down
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Down
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Softshell
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Softshell
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Casual
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Casual
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Windproof
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Windproof
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Breathable
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Breathable
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Cleaning &
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Cleaning &
                               Proofing</a></li>
                             <li class="dropdown-list-item"><a class="dropdown-item dropdown-link-all"
-                                                              href="category.html">View All</a></li>
+                                                              href="../core/templates/core/category.html">View All</a></li>
                           </ul>
                         </div>
                         <!-- / menu row-->
@@ -192,23 +163,31 @@
                         <div class="col">
                           <h6 class="dropdown-heading">Insulated</h6>
                           <ul class="list-unstyled">
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Insulated
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Insulated
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Bodywarmers</a>
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Bodywarmers</a>
                             </li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Parkas</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Baselayers &
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Parkas</a></li>
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Baselayers &
                               Thermals</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Winter Hats</a>
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Winter Hats</a>
                             </li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Scarves &
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Scarves &
                               Neck</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Gloves &
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Gloves &
                               Mitts</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Accessories</a>
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Accessories</a>
                             </li>
                             <li class="dropdown-list-item"><a class="dropdown-item dropdown-link-all"
-                                                              href="category.html">View All</a></li>
+                                                              href="../core/templates/core/category.html">View All</a></li>
                           </ul>
                         </div>
                         <!-- / menu row-->
@@ -217,24 +196,32 @@
                         <div class="d-none d-xxl-block col">
                           <h6 class="dropdown-heading">Footwear</h6>
                           <ul class="list-unstyled">
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Lifestyle &
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Lifestyle &
                               Casual</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Walking
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Walking
                               Shoes</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Running
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Running
                               Shoes</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Military
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Military
                               Boots</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Fabric Walking
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Fabric Walking
                               Boots</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Leather Walking
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Leather Walking
                               Boots</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Wellies</a>
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Wellies</a>
                             </li>
-                            <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Winter
+                            <li class="dropdown-list-item"><a class="dropdown-item"
+                                                              href="../core/templates/core/category.html">Winter
                               Footwear</a></li>
                             <li class="dropdown-list-item"><a class="dropdown-item dropdown-link-all"
-                                                              href="category.html">View All</a></li>
+                                                              href="../core/templates/core/category.html">View All</a></li>
                           </ul>
                         </div>
                         <!-- / menu row-->
@@ -243,24 +230,32 @@
                         <div class="col">
                           <h6 class="dropdown-heading text-danger">Special Offers</h6>
                           <ul class="list-unstyled">
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Insulated
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Insulated
                               Jackets</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Bodywarmers</a>
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Bodywarmers</a>
                             </li>
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Parkas</a>
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Parkas</a>
                             </li>
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Baselayers
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Baselayers
                               & Thermals</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Winter
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Winter
                               Hats</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Scarves
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Scarves
                               & Neck</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Gloves
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Gloves
                               & Mitts</a></li>
-                            <li class="dropdown-list-item"><a class="dropdown-item text-danger" href="category.html">Accessories</a>
+                            <li class="dropdown-list-item"><a class="dropdown-item text-danger"
+                                                              href="../core/templates/core/category.html">Accessories</a>
                             </li>
                             <li class="dropdown-list-item"><a class="dropdown-item text-danger dropdown-link-all"
-                                                              href="category.html">View All</a></li>
+                                                              href="../core/templates/core/category.html">View All</a></li>
                           </ul>
                         </div>
                         <!-- / menu row-->
@@ -268,44 +263,44 @@
 
                       <div class="align-items-center justify-content-between mt-5 d-none d-lg-flex">
                         <div class="me-5 f-w-20">
-                          <a class="d-block" href="category.html">
+                          <a class="d-block" href="../core/templates/core/category.html">
                             <picture>
-                              <img class="img-fluid d-table mx-auto" src="../static/images/logos/logo-1.svg" alt="">
+                              <img class="img-fluid d-table mx-auto" src="{% static 'core/images/logos/logo-1.svg' %}" alt="">
                             </picture>
                           </a>
                         </div>
                         <div class="me-5 f-w-20">
-                          <a class="d-block" href="category.html">
+                          <a class="d-block" href="../core/templates/core/category.html">
                             <picture>
-                              <img class="img-fluid d-table mx-auto" src="../static/images/logos/logo-2.svg" alt="">
+                              <img class="img-fluid d-table mx-auto" src="{% static 'core/images/logos/logo-2.svg' %}" alt="">
                             </picture>
                           </a>
                         </div>
                         <div class="me-5 f-w-20">
-                          <a class="d-block" href="category.html">
+                          <a class="d-block" href="../core/templates/core/category.html">
                             <picture>
-                              <img class="img-fluid d-table mx-auto" src="../static/images/logos/logo-3.svg" alt="">
+                              <img class="img-fluid d-table mx-auto" src="{% static 'core/images/logos/logo-3.svg' %}" alt="">
                             </picture>
                           </a>
                         </div>
                         <div class="me-5 f-w-20">
-                          <a class="d-block" href="category.html">
+                          <a class="d-block" href="../core/templates/core/category.html">
                             <picture>
-                              <img class="img-fluid d-table mx-auto" src="../static/images/logos/logo-4.svg" alt="">
+                              <img class="img-fluid d-table mx-auto" src="{% static 'core/images/logos/logo-4.svg' %}" alt="">
                             </picture>
                           </a>
                         </div>
                         <div class="me-5 f-w-20">
-                          <a class="d-block" href="category.html">
+                          <a class="d-block" href="../core/templates/core/category.html">
                             <picture>
-                              <img class="img-fluid d-table mx-auto" src="../static/images/logos/logo-5.svg" alt="">
+                              <img class="img-fluid d-table mx-auto" src="{% static 'core/images/logos/logo-5.svg' %}" alt="">
                             </picture>
                           </a>
                         </div>
                         <div class="me-5 f-w-20">
-                          <a class="d-block" href="category.html">
+                          <a class="d-block" href="../core/templates/core/category.html">
                             <picture>
-                              <img class="img-fluid d-table mx-auto" src="../static/images/logos/logo-6.svg" alt="">
+                              <img class="img-fluid d-table mx-auto" src="{% static 'core/images/logos/logo-6.svg' %}" alt="">
                             </picture>
                           </a>
                         </div>
@@ -321,41 +316,41 @@
                           <div class="col-12 col-md-6">
                             <div class="card justify-content-center d-flex align-items-center bg-transparent">
                               <picture class="w-100 d-block mb-2 mx-auto">
-                                <img class="w-100 rounded" title="" src="../static/images/banners/banner-12.jpg"
+                                <img class="w-100 rounded" title="" src="{% static 'core/images/banners/banner-12.jpg' %}"
                                      alt="HTML Bootstrap Template by Pixel Rocket">
                               </picture>
-                              <a class="fw-bolder link-cover" href="category.html">Latest Arrivals</a>
+                              <a class="fw-bolder link-cover" href="../core/templates/core/category.html">Latest Arrivals</a>
                             </div>
                           </div>
                           <div class="col-12 col-md-6">
                             <div class="card justify-content-center d-flex align-items-center bg-transparent">
                               <picture class="w-100 d-block mb-2 mx-auto">
-                                <img class="w-100 rounded" title="" src="../static/images/banners/banner-13.jpg"
+                                <img class="w-100 rounded" title="" src="{% static 'core/images/banners/banner-13.jpg' %}"
                                      alt="HTML Bootstrap Template by Pixel Rocket">
                               </picture>
-                              <a class="fw-bolder link-cover" href="category.html">Accessories</a>
+                              <a class="fw-bolder link-cover" href="../core/templates/core/category.html">Accessories</a>
                             </div>
                           </div>
                           <div class="col-12 col-md-6">
                             <div class="card justify-content-center d-flex align-items-center bg-transparent">
                               <picture class="w-100 d-block mb-2 mx-auto">
-                                <img class="w-100 rounded" title="" src="../static/images/banners/banner-14.jpg"
+                                <img class="w-100 rounded" title="" src="{% static 'core/images/banners/banner-14.jpg' %}"
                                      alt="HTML Bootstrap Template by Pixel Rocket">
                               </picture>
-                              <a class="fw-bolder link-cover" href="category.html">T-Shirts</a>
+                              <a class="fw-bolder link-cover" href="../core/templates/core/category.html">T-Shirts</a>
                             </div>
                           </div>
                           <div class="col-12 col-md-6">
                             <div class="card justify-content-center d-flex align-items-center bg-transparent">
                               <picture class="w-100 d-block mb-2 mx-auto">
-                                <img class="w-100 rounded" title="" src="../static/images/banners/banner-15.jpg"
+                                <img class="w-100 rounded" title="" src="{% static 'core/images/banners/banner-15.jpg' %}"
                                      alt="HTML Bootstrap Template by Pixel Rocket">
                               </picture>
-                              <a class="fw-bolder link-cover" href="category.html">Jackets</a>
+                              <a class="fw-bolder link-cover" href="../core/templates/core/category.html">Jackets</a>
                             </div>
                           </div>
                         </div>
-                        <a href="category.html"
+                        <a href="../core/templates/core/category.html"
                            class="btn btn-link p-0 fw-bolder text-link-border mt-5 text-dark mx-auto d-table">Visit Mens
                           Section</a>
                       </div>
@@ -372,21 +367,21 @@
                 Women
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="category.html">Tops</a></li>
-                <li><a class="dropdown-item" href="category.html">Bottoms</a></li>
-                <li><a class="dropdown-item" href="category.html">Jeans</a></li>
-                <li><a class="dropdown-item" href="category.html">T-Shirts</a></li>
-                <li><a class="dropdown-item" href="category.html">Shoes</a></li>
-                <li><a class="dropdown-item" href="category.html">Accessories</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/category.html">Tops</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/category.html">Bottoms</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/category.html">Jeans</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/category.html">T-Shirts</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/category.html">Shoes</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/category.html">Accessories</a></li>
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="category.html" role="button">
+              <a class="nav-link" href="../core/templates/core/category.html" role="button">
                 Kids
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="category.html" role="button">
+              <a class="nav-link" href="../core/templates/core/category.html" role="button">
                 Sale
               </a>
             </li>
@@ -396,22 +391,22 @@
                 Pages
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="./index.html">Homepage</a></li>
-                <li><a class="dropdown-item" href="category.html">Category</a></li>
-                <li><a class="dropdown-item" href="product.html">Product</a></li>
-                <li><a class="dropdown-item" href="../cart/templates/cart.html">Cart</a></li>
-                <li><a class="dropdown-item" href="../cart/templates/checkout.html">Checkout</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/index.html">Homepage</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/category.html">Category</a></li>
+                <li><a class="dropdown-item" href="../core/templates/core/product.html">Product</a></li>
+                <li><a class="dropdown-item" href="../cart/templates/cart/cart.html">Cart</a></li>
+                <li><a class="dropdown-item" href="../cart/templates/cart/checkout.html">Checkout</a></li>
                 <li><a class="dropdown-item" href="../account/templates/registration/login.html">Login</a></li>
                 <li><a class="dropdown-item" href="../account/templates/account/signup.html">Register</a></li>
-                <li><a class="dropdown-item" href="../account/templates/account/forgotten-password.html">Forgotten Password</a>
+                <li><a class="dropdown-item" href="../account/templates/account/forgotten-password.html">Forgotten
+                  Password</a>
                 </li>
               </ul>
             </li>
-          </ul>                    <!-- / Menu-->
-
+          </ul>
+          <!-- / Menu-->
         </div>
         <!-- / Main Navigation-->
-
       </div>
     </div>
   </div>

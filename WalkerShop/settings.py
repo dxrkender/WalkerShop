@@ -139,8 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DJANGO_SETTINGS_MODULE = 'WalkerShop.settings'
 
 # https://docs.djangoproject.com/en/4.2/howto/initial-data/
+
 FIXTURE_DIRS = [
     BASE_DIR / 'account/fixtures/',
-
     BASE_DIR / 'core/fixtures/',
 ]
