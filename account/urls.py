@@ -17,11 +17,14 @@ Including another URLconf
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 
-from account.views import ClientLoginView, ForgotView, SignUpView
+from account.views import ClientLoginView, ForgotView, SignUpView, TokenView
 
 urlpatterns = [
+    path('', ClientLoginView.as_view(), name='account_index'),
     path('login/', ClientLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('forgot/', ForgotView.as_view(), name='forgot'),
     path('signup/', SignUpView.as_view(), name='signup'),
+    path('forgot/<str:token>', TokenView.as_view(), name='forgot'),
+
 ]

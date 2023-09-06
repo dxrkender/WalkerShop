@@ -5,8 +5,9 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 
+from account.managers import ClientManager
 
-# Create your models here.
+
 class Client(AbstractUser):
     username = models.CharField(
         max_length=256,
@@ -33,6 +34,8 @@ class Client(AbstractUser):
         auto_now=True,
         verbose_name='Joined at'
     )
+
+    client_manager = ClientManager()
 
     def save(self, *args, **kwargs):
         if not self.slug:

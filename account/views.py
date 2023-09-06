@@ -1,5 +1,6 @@
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
+from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
@@ -7,6 +8,7 @@ from django.views.generic.edit import ProcessFormView
 
 from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm
 from account.models import Client
+from account.services.email import send_forgot_message_to_client
 
 
 class ClientLoginView(LoginView):
@@ -27,10 +29,17 @@ class ForgotView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         context = self.get_context_data()
-        if context["form"].is_valid():
-            redirect('home')
-        #     TODO: you need to write services for approve user email and
-        #           send the email with recovery link to user.
+        form = context["form"]
+        if form.is_valid():
+            form.cleaned_data()
+            email = form['email']
+            if send_forgot_message_to_client(email=email):
+                return redirect('home', context=context)
+            else:
+                return redirect('home', context=context)
+
+
+
 
         return redirect('forgot', context=context)
 
@@ -45,6 +54,9 @@ class ForgotView(TemplateView):
     def send_email_to_client(self, *args, **kwargs):
         # TODO: White services for send email and confirm the token.
         pass
+
+class TokenView(TemplateView):
+    pass
 
 
 def logout_view(request):

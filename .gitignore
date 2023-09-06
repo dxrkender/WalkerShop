@@ -211,4 +211,7 @@ ENV/
 # mkdocs documentation
 /site
 
+# database fixtures
+commands.txt
+
 # End of https://www.gitignore.io/api/macos,linux,django,python,pycharm
