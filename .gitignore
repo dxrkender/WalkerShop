@@ -211,7 +211,11 @@ ENV/
 # mkdocs documentation
 /site
 
+<<<<<<< HEAD
 # Internal files
+=======
+# database fixtures
+>>>>>>> auth
 commands.txt
 
 # End of https://www.gitignore.io/api/macos,linux,django,python,pycharm

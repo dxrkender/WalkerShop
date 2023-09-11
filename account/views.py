@@ -1,9 +1,10 @@
 from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView
-from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView, PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
-from django.views.generic.edit import ProcessFormView
+from django.views.generic import CreateView
+
 
 from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm
 from account.models import Client
@@ -21,30 +22,16 @@ class SignUpView(CreateView):
     model = Client
 
 
-class ForgotView(TemplateView):
-    template_name = 'account/forgotten-password.html'
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'account/password_reset.html'
+    email_template_name = 'account/password_reset_email.html'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('login')
+    subject_template_name = 'account/password_reset_subject.txt'
     form_class = ForgottenPasswordForm
-
-    def post(self, request, *args, **kwargs):
-        context = self.get_context_data()
-        if context["form"].is_valid():
-            redirect('home')
-        #     TODO: you need to write services for approve user email and
-        #           send the email with recovery link to user.
-
-        return redirect('forgot', context=context)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        form = ForgottenPasswordForm(self.request.POST or None)  # instance= None
-
-        context["form"] = form
-        return context
-
-    def send_email_to_client(self, *args, **kwargs):
-        # TODO: White services for send email and confirm the token.
-        pass
 
 
 def logout_view(request):

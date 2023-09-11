@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'account.apps.AccountConfig',
-    'cart.apps.CartConfig'
+
+    'cart.apps.CartConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -136,7 +138,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DJANGO_SETTINGS_MODULE = 'WalkerShop.settings'
 
-# https://docs.djangoproject.com/en/4.2/howto/initial-data/
-FIXTURE_DIRS = [
-    BASE_DIR / 'account/fixtures/',
-]
+# https://docs.djangoproject.com/en/4.2/howto/initial-data/#:~:text=A%20fixture%20is%20a%20collection,the%20manage.py%20dumpdata%20command.
+FIXTURE_DIRS = BASE_DIR / 'fixtures/'
+
+# Email settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = 'support@walkershop.com'
