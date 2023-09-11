@@ -139,7 +139,6 @@ DJANGO_SETTINGS_MODULE = 'WalkerShop.settings'
 FIXTURE_DIRS = BASE_DIR / 'fixtures/'
 
 # Email settings
-
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')

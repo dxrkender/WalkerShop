@@ -50,7 +50,10 @@
 
           <button type="submit" class="btn btn-dark d-block w-100 my-4">Login</button>
           <p class="d-block text-center text-muted">New customer?
-            <a class="text-muted" href="../account/signup.html">Sign up for an account</a>
+            <a class="text-muted" href="{% url 'signup' %}">Sign up for an account</a>
+          </p>
+          <p class="d-block text-center text-muted">
+            Forgot password? <a class="text-muted" href="{% url 'reset' %}">Reset password.</a>
           </p>
         </form>
       </div>

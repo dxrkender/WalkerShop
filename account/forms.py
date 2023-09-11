@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
@@ -7,13 +7,14 @@ from django.forms import ModelForm
 from account.models import Client
 
 
-class ForgottenPasswordForm(forms.Form):
+class ForgottenPasswordForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
         kwargs["label_suffix"] = ""
         super().__init__(*args, **kwargs)
 
     email = forms.EmailField(
         label='Email Address',
+        max_length=254,
         widget=forms.EmailInput(
             attrs={
                 'class': 'form-control',

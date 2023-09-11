@@ -1,5 +1,6 @@
 from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -24,7 +25,7 @@ class SignUpView(CreateView):
 
 
 class ForgotView(TemplateView):
-    template_name = 'account/forgotten-password.html'
+    template_name = 'account/password_reset.html'
     form_class = ForgottenPasswordForm
 
     def post(self, request, *args, **kwargs):
@@ -34,7 +35,7 @@ class ForgotView(TemplateView):
             form.cleaned_data()
             email = form['email']
             if send_forgot_message_to_client(email=email):
-                return redirect('home', context=context)
+                return redirect('forgot', context=context)
             else:
                 return redirect('home', context=context)
 
@@ -55,8 +56,18 @@ class ForgotView(TemplateView):
         # TODO: White services for send email and confirm the token.
         pass
 
-class TokenView(TemplateView):
-    pass
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'account/password_reset.html'
+    email_template_name = 'account/password_reset_email.html'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('login')
+    form_class = ForgottenPasswordForm
+
+
 
 
 def logout_view(request):

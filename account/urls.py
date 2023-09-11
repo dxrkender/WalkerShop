@@ -14,10 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 
-from account.views import ClientLoginView, ForgotView, SignUpView, TokenView
+from account.views import ClientLoginView, ForgotView, SignUpView, ResetPasswordView
 
 urlpatterns = [
     path('', ClientLoginView.as_view(), name='account_index'),
@@ -25,6 +26,13 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('forgot/', ForgotView.as_view(), name='forgot'),
     path('signup/', SignUpView.as_view(), name='signup'),
-    path('forgot/<str:token>', TokenView.as_view(), name='forgot'),
+    path('reset/', ResetPasswordView.as_view(), name='reset'),
+    path('reset/<str:token>', ResetPasswordView.as_view(), name='token'),
+    path('reset/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name='account/password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('reset_complete/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='account/password_reset_complete.html'),
+         name='password_reset_complete'),
 
 ]
