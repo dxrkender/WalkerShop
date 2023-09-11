@@ -18,13 +18,13 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 
-from account.views import ClientLoginView, ForgotView, SignUpView, ResetPasswordView
+from account.views import ClientLoginView, SignUpView, ResetPasswordView
 
 urlpatterns = [
     path('', ClientLoginView.as_view(), name='account_index'),
     path('login/', ClientLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
-    path('forgot/', ForgotView.as_view(), name='forgot'),
+    # path('forgot/', ForgotView.as_view(), name='forgot'),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('reset/', ResetPasswordView.as_view(), name='reset'),
     path('reset/<str:token>', ResetPasswordView.as_view(), name='token'),
