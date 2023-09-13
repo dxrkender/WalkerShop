@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white flex-column border-0  ">
   <div class="container-fluid">
@@ -5,13 +6,10 @@
       <div class="d-flex justify-content-between align-items-center flex-wrap">
 
         <!-- Logo-->
-        <a class="navbar-brand fw-bold fs-3 m-0 p-0 flex-shrink-0 order-0" href="./index.html">
+        {# Add to href url for home #}
+        <a class="navbar-brand fw-bold fs-3 m-0 p-0 flex-shrink-0 order-0" href="">
           <div class="d-flex align-items-center">
-            <svg class="f-w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 77.53 72.26">
-              <path
-                  d="M10.43,54.2h0L0,36.13,10.43,18.06,20.86,0H41.72L10.43,54.2Zm67.1-7.83L73,54.2,68.49,62,45,48.47,31.29,72.26H20.86l-5.22-9L52.15,0H62.58l5.21,9L54.06,32.82,77.53,46.37Z"
-                  fill="currentColor" fill-rule="evenodd"/>
-            </svg>
+            <img src="{% static 'svgs/logo-small-black.svg' %}" alt="WalkerShop" height="100%">
           </div>
         </a>
         <!-- / Logo-->
@@ -53,7 +51,7 @@
 
           <!-- Navbar Login-->
           <li class="ms-1 d-none d-lg-inline-block">
-            <a class="nav-link text-body" href="../account/templates/registration/login.html">
+            <a class="nav-link text-body" href="{% url 'login' %}">
               Account
             </a>
           </li>
@@ -130,8 +128,9 @@
                     <p class="m-0 fs-5 fw-bold">$422.99</p>
                   </div>
                 </div>
-                <a href="../cart/templates/cart.html" class="btn btn-outline-dark w-100 text-center mt-4" role="button">View Cart</a>
-                <a href="../cart/templates/checkout.html" class="btn btn-dark w-100 text-center mt-2" role="button">Proceed To
+                {# Add to href url for cart and checkout #}
+                <a href="" class="btn btn-outline-dark w-100 text-center mt-4" role="button">View Cart</a>
+                <a href="" class="btn btn-dark w-100 text-center mt-2" role="button">Proceed To
                   Checkout</a>
               </div>
               <!-- / Cart Summary-->
@@ -166,6 +165,7 @@
                         <div class="col">
                           <h6 class="dropdown-heading">Coats & Jackets</h6>
                           <ul class="list-unstyled">
+                            {# Add to href url for home #}
                             <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Waterproof
                               Jackets</a></li>
                             <li class="dropdown-list-item"><a class="dropdown-item" href="category.html">Insulated
@@ -401,9 +401,9 @@
                 <li><a class="dropdown-item" href="product.html">Product</a></li>
                 <li><a class="dropdown-item" href="../cart/templates/cart.html">Cart</a></li>
                 <li><a class="dropdown-item" href="../cart/templates/checkout.html">Checkout</a></li>
-                <li><a class="dropdown-item" href="../account/templates/registration/login.html">Login</a></li>
-                <li><a class="dropdown-item" href="../account/templates/account/signup.html">Register</a></li>
-                <li><a class="dropdown-item" href="../account/templates/account/forgotten-password.html">Forgotten Password</a>
+                <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
+                <li><a class="dropdown-item" href="{% url 'reset' %}">Forgotten Password</a>
                 </li>
               </ul>
             </li>

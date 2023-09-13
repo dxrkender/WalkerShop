@@ -1,31 +1,32 @@
+{% load static %}
 <!-- Footer -->
 <footer class="border-top mt-auto">
   <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row">
-      <div>
-        <ul class="list-unstyled">
-          <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
-                                             href="#"><i class="ri-instagram-fill"></i></a></li>
-          <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
-                                             href="#"><i class="ri-facebook-fill"></i></a></li>
-          <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
-                                             href="#"><i class="ri-twitter-fill"></i></a></li>
-          <li class="d-inline-block me-1"><a class="text-decoration-none text-dark-hover transition-all"
-                                             href="#"><i class="ri-snapchat-fill"></i></a></li>
+      <div class="d-flex align-items-center justify-content-start flex-column flex-lg-row">
+        <ul class="list-unstyled mb-0 ms-lg-4 mt-3 mt-lg-0 d-flex justify-content-start align-items-center">
+          <li class="d-inline-block me-3">
+            <a class="text-decoration-none text-dark-hover transition-all" href="#">
+              <img src="{% static 'svgs/github.svg' %}" alt="Github" height="30px">
+            </a>
+          </li>
+          <li class="d-inline-block me-1">
+            <a class="text-decoration-none text-dark-hover transition-all" href="#">
+              <img src="{% static 'svgs/linkedin.svg' %}" alt="LinkedIn" height="30px">
+            </a>
+          </li>
         </ul>
       </div>
       <div class="d-flex align-items-center justify-content-end flex-column flex-lg-row">
-        <p class="small m-0 text-center text-lg-start">&copy; 2021 OldSkool All Rights Reserved. Template by <a
-            href="https://www.pixelrocket.store">Pixel Rocket</a></p>
+        <p class="small m-0 text-center text-lg-start">&copy; 2023 WalkerShop All Rights Reserved.</p>
         <ul class="list-unstyled mb-0 ms-lg-4 mt-3 mt-lg-0 d-flex justify-content-end align-items-center">
-          <li class="bg-light p-2 d-flex align-items-center justify-content-center me-2">
-            <i class="pi pi-sm pi-paypal"></i></li>
-          <li class="bg-light p-2 d-flex align-items-center justify-content-center me-2">
-            <i class="pi pi-sm pi-mastercard"></i></li>
-          <li class="bg-light p-2 d-flex align-items-center justify-content-center me-2">
-            <i class="pi pi-sm pi-american-express"></i></li>
-          <li class="bg-light p-2 d-flex align-items-center justify-content-center"><i
-              class="pi pi-sm pi-visa"></i>
+          <li class="p-2 d-flex align-items-center justify-content-center me-2">
+            <img src="{% static 'svgs/paypal.svg' %}" alt="PayPal" height="25px">
+          <li class="p-2 d-flex align-items-center justify-content-center">
+            <img src="{% static 'svgs/visa.svg' %}" alt="Visa" height="25px">
+          </li>
+          <li class="p-1 d-flex align-items-center justify-content-center">
+            <img src="{% static 'svgs/mastercard.svg' %}" alt="MasterCard" height="37px">
           </li>
         </ul>
       </div>
