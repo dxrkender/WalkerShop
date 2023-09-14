@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os.path
 from pathlib import Path
 
+import shop.apps
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'account.apps.AccountConfig',
-
     'cart.apps.CartConfig',
-
+    'shop.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,7 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / 'account/templates',
             BASE_DIR / 'cart/templates',
+            BASE_DIR / 'shop/templates',
             BASE_DIR / 'templates',
         ],
         'APP_DIRS': True,
