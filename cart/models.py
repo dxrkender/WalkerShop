@@ -1,3 +1,4 @@
+"""Creating a `Category` and `Product` models."""
 from django.db import models
 from django.utils import timezone
 
@@ -5,18 +6,31 @@ from account.models import Client
 
 
 class ProductCategory(models.Model):
+    """Implementing model category of products."""
+
+    _default_field_short_length: int = 127
+
     category_name = models.CharField(
-        max_length=128,
+        max_length=_default_field_short_length,
     )
 
     def __str__(self):
-        return f'<ProductCategory: {self.category_name}>'
+        """Magic method for print instance.
+
+        Returns:
+            String representation of an object instance.
+        """
+        return '<ProductCategory: {name}>'.format(name='self.category_name')
 
 
 class Product(models.Model):
+    """Implementing model product."""
+
+    _default_field_length: int = 255
+
     product_name = models.CharField(
         verbose_name='Product',
-        max_length=256,
+        max_length=_default_field_length,
     )
     quantity = models.PositiveIntegerField(
         verbose_name='Quantity',
@@ -41,18 +55,22 @@ class Product(models.Model):
 
     category = models.ForeignKey(
         to=ProductCategory,
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
     )
 
     cart_id = models.ManyToManyField(
         to=Client,
         related_name='user_cart',
-        db_table='cart'
+        db_table='cart',
     )
 
     def __str__(self):
-        return f'<Product: {self.product_name} - {self.price}>'
+        """Magic method for print instance.
 
-
-# class Order(models.Model):
-#     pass
+        Returns:
+            String representation of an object instance.
+        """
+        return '<Product: {name} - {price}>'.format(
+            name=self.product_name,
+            price=self.price,
+        )

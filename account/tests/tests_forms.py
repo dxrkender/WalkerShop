@@ -105,14 +105,13 @@ class TestSignUpForm(TestCase):
         self.assertEqual(excepted_password_attrs, password_attrs)
         self.assertEqual(excepted_password1_attrs, password1_attrs)
 
-
     def test_clean_password(self):
         form = SignUpForm(
             data={
-                "username": "testusername",
-                "email": "test@username.com",
-                "password": "Testpassword1",
-                "password1": "Testpassword2",
+                'username': 'testusername',
+                'email': 'test@username.com',
+                'password': 'Testpassword1',
+                'password1': 'Testpassword2',
             })
         form.is_valid()
         form.clean()
@@ -121,10 +120,10 @@ class TestSignUpForm(TestCase):
 
         form = SignUpForm(
             data={
-                "username": "testusername",
-                "email": "test@username.com",
-                "password": "Testpassword1",
-                "password1": "Testpassword1",
+                'username': 'testusername',
+                'email': 'test@username.com',
+                'password': 'Testpassword1',
+                'password1': 'Testpassword1',
             })
 
         self.assertFalse(form.errors)
