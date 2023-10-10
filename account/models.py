@@ -6,8 +6,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 
-# from account.managers import ClientManager  # noqa
-
 
 class Client(AbstractUser):
     """
@@ -51,8 +49,6 @@ class Client(AbstractUser):
         auto_now=True,
         verbose_name='Joined at',
     )
-
-    # client_manager: models.Manager = ClientManager()  # noqa
 
     def save(self, *args, **kwargs) -> None:
         """Adding a slug to a client object during the initial save process.
