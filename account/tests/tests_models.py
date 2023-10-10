@@ -33,8 +33,8 @@ class TestClient(TestWithUsersMixin, TestCase):
     def test_str(self):
         test_client1 = Client.objects.get(pk=self.test_client1.pk)
         test_client2 = Client.objects.get(pk=self.test_client2.pk)
-        self.assertEqual(str(test_client1), '<User: TestClient1 - test@client.com - testclient1>')
-        self.assertEqual(str(test_client2), '<User: ТестКлиент2 - test2@client.com - 2>')
+        self.assertEqual(str(test_client1), '<Client: TestClient1 - test@client.com - testclient1>')
+        self.assertEqual(str(test_client2), '<Client: ТестКлиент2 - test2@client.com - 2>')
 
     def test_username_validators(self):
         self.test_client3 = Client.objects.create_user(

@@ -74,7 +74,14 @@ class Client(AbstractUser):
         """
         return reverse(viewname='home', kwargs={'slug_id': self.slug})
 
-
     def __str__(self):
+        """Magic method for print instance.
 
-        return '<User: TestClient1 - test@client.com - testclient1>'
+        Returns:
+            String representation of an object instance.
+        """
+        return '<Client: {username} - {email} - {slug}>'.format(
+            username=self.username,
+            email=self.email,
+            slug=self.slug,
+        )

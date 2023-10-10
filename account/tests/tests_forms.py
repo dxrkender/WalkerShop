@@ -1,6 +1,8 @@
+from django.contrib.auth.hashers import make_password
 from django.test import TestCase
 
 from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm
+from account.models import Client
 
 
 class TestForgottenPasswordForm(TestCase):
@@ -128,3 +130,17 @@ class TestSignUpForm(TestCase):
             })
 
         self.assertFalse(form.errors)
+
+    def test_save(self):
+        self.form = SignUpForm(
+            data={
+                'username': 'testsave',
+                'email': 'test@username.com',
+                'password': 'Testpassword3',
+                'password1': 'Testpassword3',
+            },
+        )
+        self.form.save()
+        test_client = Client.objects.get(username='testsave')
+        self.assertIsNotNone(test_client.password)
+        self.assertTrue(test_client.has_usable_password())
