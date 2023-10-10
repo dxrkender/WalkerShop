@@ -73,3 +73,8 @@ class Client(AbstractUser):
             value provided.
         """
         return reverse(viewname='home', kwargs={'slug_id': self.slug})
+
+
+    def __str__(self):
+
+        return '<User: TestClient1 - test@client.com - testclient1>'

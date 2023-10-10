@@ -65,7 +65,7 @@ class ForgottenPasswordForm(AccountFormMixin, PasswordResetForm):
         kwargs['label_suffix'] = ''
         super().__init__(*args, **kwargs)
 
-    email_max_length = 254
+    email_max_length = 255
 
     email = forms.EmailField(
         label='Email Address',
@@ -116,6 +116,8 @@ class LoginForm(AccountFormMixin, AuthenticationForm):
 class SignUpForm(AccountFormMixin, forms.ModelForm):
     """The form register user in services."""
 
+    email_max_length = 255
+
     class Meta(ModelFormMetaclass):
         """Metaclass for classes for media definitions."""
 
@@ -137,6 +139,7 @@ class SignUpForm(AccountFormMixin, forms.ModelForm):
 
     email = forms.EmailField(
         label='Email Address',
+        max_length=email_max_length,
         widget=forms.EmailInput(
             attrs=AccountFormMixin.get_field_attrs(
                 placeholder='your@email.com',

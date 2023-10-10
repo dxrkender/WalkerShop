@@ -16,7 +16,8 @@ class TestForgottenPasswordForm(TestCase):
         excepted_email_attrs = {
             'class': 'form-control',
             'placeholder': 'your@email.com',
-            'maxlength': '320',
+            'maxlength': '255',
+            'label_class': 'form-label',
         }
         self.assertEqual(excepted_email_attrs, email_attrs)
 
@@ -43,7 +44,7 @@ class TestLoginForm(TestCase):
             'class': 'form-control',
             'placeholder': 'Your username',
             'label_class': 'form-label',
-            'maxlength': 256,
+            'maxlength': 255,
         }
 
         excepted_password_attrs = {
@@ -83,9 +84,9 @@ class TestSignUpForm(TestCase):
 
         excepted_email_attrs = {
             'class': 'form-control',
-            'placeholder': 'name@email.com',
+            'placeholder': 'your@email.com',
             'label_class': 'form-label',
-            'maxlength': '320',
+            'maxlength': '255',
         }
 
         excepted_password_attrs = {
