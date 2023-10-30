@@ -14,8 +14,6 @@ from types import MappingProxyType
 
 from getenv import env
 
-import shop.apps
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,15 +41,9 @@ INSTALLED_APPS = (
     'account.apps.AccountConfig',
     'cart.apps.CartConfig',
     'shop.apps.ShopConfig',
-<<<<<<< HEAD
-]
-
-MIDDLEWARE = [
-=======
 )
 
 MIDDLEWARE = (
->>>>>>> develop
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
