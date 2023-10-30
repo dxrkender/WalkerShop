@@ -1,8 +1,22 @@
-from django.contrib.auth.hashers import make_password
 from django.test import TestCase
 
-from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm
+from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm, \
+    AccountFormMixin
 from account.models import Client
+
+
+class TestAccountFormMixin(TestCase):
+    def setUp(self) -> None:
+        self.form_mixin = AccountFormMixin()
+
+    def test_get_field_attrs(self):
+        attrs = self.form_mixin.get_field_attrs('abc')
+        excepted_attrs = {
+            'class': 'form-control',
+            'label_class': 'form-label',
+            'placeholder': 'abc',
+        }
+        self.assertEqual(attrs, excepted_attrs)
 
 
 class TestForgottenPasswordForm(TestCase):
@@ -17,7 +31,7 @@ class TestForgottenPasswordForm(TestCase):
         email_attrs = self.form.fields['email'].widget.attrs
         excepted_email_attrs = {
             'class': 'form-control',
-            'placeholder': 'your@email.com',
+            'placeholder': 'Your@email.com',
             'maxlength': '255',
             'label_class': 'form-label',
         }

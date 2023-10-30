@@ -72,7 +72,7 @@ class ForgottenPasswordForm(AccountFormMixin, PasswordResetForm):
         max_length=email_max_length,
         widget=forms.EmailInput(
             attrs=AccountFormMixin.get_field_attrs(
-                placeholder='your@email.com',
+                placeholder='Your@email.com',
             ),
         ),
     )

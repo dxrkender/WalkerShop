@@ -19,8 +19,8 @@ Including another URLconf
 
 from django.urls import path
 
-from cart.views import CartView
+from shop.views import HomeView
 
 urlpatterns = [
-    path('<slug:slug_id>/', CartView.as_view(), name='client_cart'),
+    path('', HomeView.as_view(), name='home'),
 ]

@@ -68,7 +68,7 @@ class Client(AbstractUser):
             Retrieving url details from the urls.py file through the viewname
             value provided.
         """
-        return reverse(viewname='home', kwargs={'slug_id': self.slug})
+        return reverse(viewname='client_cart', kwargs={'slug_id': self.slug})
 
     def __str__(self):
         """Magic method for print instance.
