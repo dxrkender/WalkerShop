@@ -1,6 +1,22 @@
 from django.test import TestCase
 
-from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm
+from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm, \
+    AccountFormMixin
+from account.models import Client
+
+
+class TestAccountFormMixin(TestCase):
+    def setUp(self) -> None:
+        self.form_mixin = AccountFormMixin()
+
+    def test_get_field_attrs(self):
+        attrs = self.form_mixin.get_field_attrs('abc')
+        excepted_attrs = {
+            'class': 'form-control',
+            'label_class': 'form-label',
+            'placeholder': 'abc',
+        }
+        self.assertEqual(attrs, excepted_attrs)
 
 
 class TestForgottenPasswordForm(TestCase):
@@ -15,8 +31,9 @@ class TestForgottenPasswordForm(TestCase):
         email_attrs = self.form.fields['email'].widget.attrs
         excepted_email_attrs = {
             'class': 'form-control',
-            'placeholder': 'your@email.com',
-            'maxlength': '320',
+            'placeholder': 'Your@email.com',
+            'maxlength': '255',
+            'label_class': 'form-label',
         }
         self.assertEqual(excepted_email_attrs, email_attrs)
 
@@ -43,7 +60,7 @@ class TestLoginForm(TestCase):
             'class': 'form-control',
             'placeholder': 'Your username',
             'label_class': 'form-label',
-            'maxlength': 256,
+            'maxlength': 255,
         }
 
         excepted_password_attrs = {
@@ -83,9 +100,9 @@ class TestSignUpForm(TestCase):
 
         excepted_email_attrs = {
             'class': 'form-control',
-            'placeholder': 'name@email.com',
+            'placeholder': 'your@email.com',
             'label_class': 'form-label',
-            'maxlength': '320',
+            'maxlength': '255',
         }
 
         excepted_password_attrs = {
@@ -105,14 +122,13 @@ class TestSignUpForm(TestCase):
         self.assertEqual(excepted_password_attrs, password_attrs)
         self.assertEqual(excepted_password1_attrs, password1_attrs)
 
-
     def test_clean_password(self):
         form = SignUpForm(
             data={
-                "username": "testusername",
-                "email": "test@username.com",
-                "password": "Testpassword1",
-                "password1": "Testpassword2",
+                'username': 'testusername',
+                'email': 'test@username.com',
+                'password': 'Testpassword1',
+                'password1': 'Testpassword2',
             })
         form.is_valid()
         form.clean()
@@ -121,10 +137,24 @@ class TestSignUpForm(TestCase):
 
         form = SignUpForm(
             data={
-                "username": "testusername",
-                "email": "test@username.com",
-                "password": "Testpassword1",
-                "password1": "Testpassword1",
+                'username': 'testusername',
+                'email': 'test@username.com',
+                'password': 'Testpassword1',
+                'password1': 'Testpassword1',
             })
 
         self.assertFalse(form.errors)
+
+    def test_save(self):
+        self.form = SignUpForm(
+            data={
+                'username': 'testsave',
+                'email': 'test@username.com',
+                'password': 'Testpassword3',
+                'password1': 'Testpassword3',
+            },
+        )
+        self.form.save()
+        test_client = Client.objects.get(username='testsave')
+        self.assertIsNotNone(test_client.password)
+        self.assertTrue(test_client.has_usable_password())

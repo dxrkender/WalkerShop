@@ -1,6 +1,9 @@
-from django.shortcuts import render
+"""Add endpoints for url `/cart` in path."""
+
 from django.views.generic import TemplateView
 
 
 class CartView(TemplateView):
-    pass
+    """View for user's cart."""
+
+    template_name = ''

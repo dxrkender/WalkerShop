@@ -1,5 +1,6 @@
 from django.db import models
 
+<<<<<<< HEAD
 
 class Product(models.Model):
     SIZES = [
@@ -48,3 +49,6 @@ class Comment(models.Model):
         choices=GRADES,
         default=DEFAULT_GRADE
     )
+=======
+# Create your models here.
+>>>>>>> develop
