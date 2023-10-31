@@ -211,11 +211,11 @@ ENV/
 # mkdocs documentation
 /site
 
-<<<<<<< HEAD
-# Internal files
-=======
 # database fixtures
->>>>>>> auth
 commands.txt
+
+# Flake8 runner
+run_flake8.sh
+
 
 # End of https://www.gitignore.io/api/macos,linux,django,python,pycharm

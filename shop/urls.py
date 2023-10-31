@@ -19,8 +19,10 @@ Including another URLconf
 
 from django.urls import path
 
-from shop.views import HomeView
+from shop.views import CategoryView, IndexView, ProductView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('', IndexView.as_view(), name='index'),
+    path('category/', CategoryView.as_view(), name='category'),
+    path('product/<slug:slud_id>/', ProductView.as_view(), name='product'),
 ]
