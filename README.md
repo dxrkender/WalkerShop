@@ -118,10 +118,6 @@ You need set up environment variables (Email and Django setting) to run the proj
 run server (using the following command in root of the project):
 
 ```shell
-  source setup.sh
-```
-
-```shell
   python ./manage.py runserver
 ```
 
