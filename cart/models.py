@@ -13,14 +13,26 @@ class ProductCategory(models.Model):
         _default_field_short_length (int):
             It's the constant for length of field.
 
+        _default_field_medium_length (int):
+            It's the constant for length of field.
+
         category_name (models.CharField):
             This field is for the name of the clothing category.
+
+        category_description (models.TextField):
+            This field is for description of the category.
     """
 
     _default_field_short_length: int = 127
+    _default_field_medium_length: int = 255
 
     category_name: models.CharField = models.CharField(
         max_length=_default_field_short_length,
+    )
+
+    category_description = models.TextField(
+        max_length=_default_field_medium_length,
+        default='Category of products',
     )
 
     class Meta(AbstractUser.Meta):
@@ -51,7 +63,7 @@ class ProductCategory(models.Model):
         Returns:
             String representation of an object instance.
         """
-        return 'Product Category'
+        return 'Product Category: {name}'.format(name=self.category_name)
 
 
 class Product(models.Model):

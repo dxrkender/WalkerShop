@@ -25,8 +25,8 @@ class ProductCategoryAdmin(admin.ModelAdmin):
             Fields which will be displayed admin interface.
     """
 
-    fields: Tuple[str] = ('category_name',)
-    list_display: Tuple[str] = ('category_name',)
+    fields: Tuple[str] = ('category_name', 'category_description')
+    list_display: Tuple[str] = ('category_name', 'category_description')
 
 
 @admin.register(Product)
@@ -62,7 +62,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(AudienceCategory)
-class ClientAudienceCategoryAdmin(admin.ModelAdmin):
+class AudienceCategoryAdmin(admin.ModelAdmin):
     """Customizing admin interface for `ClientAudienceCategoryAdmin` model.
 
     Attributes:
@@ -81,7 +81,11 @@ class ClientAudienceCategoryAdmin(admin.ModelAdmin):
     _text_area_cols = 100
     _text_area_length = 97
 
-    fields: Tuple[str] = ('audience_name', 'audience_description')
+    fields: Tuple[str] = (
+        'audience_name',
+        'audience_description',
+        'categories',
+    )
     list_display: Tuple[str] = ('audience_name', 'audience_description')
 
     formfield_overrides: Dict = {

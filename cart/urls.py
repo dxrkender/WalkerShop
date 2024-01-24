@@ -19,8 +19,18 @@ Including another URLconf
 
 from django.urls import path
 
-from cart.views import CartView
+from cart.views import (  # isort:skip
+    CartView,
+    CheckoutCartView,
+    OrdersCartView,
+    PaymentCartView,
+    ShippingCartView
+)
 
 urlpatterns = [
-    path('<slug:slug_id>/', CartView.as_view(), name='client_cart'),
+    path('', CartView.as_view(), name='client_cart'),
+    path('checkout/', CheckoutCartView.as_view(), name='checkout'),
+    path('shipping/', ShippingCartView.as_view(), name='shipping'),
+    path('payment/', PaymentCartView.as_view(), name='payment'),
+    path('orders/', OrdersCartView.as_view(), name='orders'),
 ]

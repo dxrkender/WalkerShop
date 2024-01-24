@@ -1,0 +1,19 @@
+<nav class="d-none d-md-block">
+  <ul class="list-unstyled d-flex justify-content-start mt-4 align-items-center fw-bolder small">
+    <li class="me-4">
+      <a class="nav-link-checkout {% if request.path == '/cart/' %}active{% endif %}" href="{% url 'client_cart' %}">Your Cart</a>
+    </li>
+    <li class="me-4">
+      <a class="nav-link-checkout {% if request.path == '/cart/checkout/' %}active{% endif %}" href="{% url 'checkout' %}">Information</a>
+    </li>
+    <li class="me-4">
+      <a class="nav-link-checkout {% if request.path == '/cart/shipping/' %}active{% endif %}" href="{% url 'shipping' %}">Shipping</a>
+    </li>
+    <li class="me-4">
+      <a class="nav-link-checkout {% if request.path == '/cart/payment/' %}active{% endif %}" href="{% url 'payment' %}">Payment</a>
+    </li>
+    <li>
+      <a class="nav-link-checkout nav-link-last {% if request.path == '/cart/orders/' %}active{% endif %}" href="{% url 'orders' %}">Your Orders</a>
+    </li>
+  </ul>
+</nav>
