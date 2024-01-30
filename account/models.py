@@ -61,7 +61,7 @@ class Client(AbstractUser):
             self.slug = slugify(self.username)
         super().save(*args, **kwargs)
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         """Create url from client's slug.
 
         Returns:

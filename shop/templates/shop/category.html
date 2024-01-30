@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  <title>WalkerShop | Category</title>
+{% endblock %}
+
+
+{% block content %}
 <!-- Main Section-->
 <section class="mt-0 ">
   <!-- Page Content Goes Here -->
@@ -108,7 +117,8 @@
         <div class="card border border-transparent position-relative overflow-hidden h-100 transparent">
           <div class="card-img position-relative">
             <div class="card-badges">
-              <span class="badge badge-card"><span class="f-w-2 f-h-2 bg-secondary rounded-circle d-block me-1"></span> Sold Out</span>
+              <span class="badge badge-card"><span
+                  class="f-w-2 f-h-2 bg-secondary rounded-circle d-block me-1"></span> Sold Out</span>
             </div>
             <span class="position-absolute top-0 end-0 p-2 z-index-20 text-muted"><i class="ri-heart-line"></i></span>
             <picture class="position-relative overflow-hidden d-block bg-light">
@@ -523,3 +533,7 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+
+

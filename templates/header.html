@@ -49,9 +49,11 @@
           <!-- /Navbar Search-->
           <!-- Navbar Login-->
           <li class="ms-1 d-none d-lg-inline-block">
-            <a class="nav-link text-body" href="{% url 'login' %}">
-              Account
-            </a>
+            {% if not user %}
+              <a class="nav-link text-body" href="{% url 'login' %}">Account</a>
+            {% else %}
+              <a class="nav-link text-body" href="{% url 'account_index' %}">{{ user.username }}</a>
+            {% endif %}
           </li>
           <!-- /Navbar Login-->
           <!-- Navbar Cart Icon-->
@@ -412,23 +414,6 @@
               <a class="nav-link" href="../shop/templates/shop/category.html" role="button">
                 Sale
               </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                 aria-expanded="false">
-                Pages
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../shop/templates/shop/index.html">Homepage</a></li>
-                <li><a class="dropdown-item" href="../shop/templates/shop/category.html">Category</a></li>
-                <li><a class="dropdown-item" href="../shop/templates/shop/product.html">Product</a></li>
-                <li><a class="dropdown-item" href="../cart/templates/cart/cart.html">Cart</a></li>
-                <li><a class="dropdown-item" href="../cart/templates/cart/checkout.html">Checkout</a></li>
-                <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-                <li><a class="dropdown-item" href="{% url 'signup' %}">Register</a></li>
-                <li><a class="dropdown-item" href="{% url 'reset' %}">Forgotten Password</a>
-                </li>
-              </ul>
             </li>
           </ul>                    <!-- / Menu-->
         </div>

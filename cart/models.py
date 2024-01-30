@@ -6,6 +6,61 @@ from django.utils import timezone
 from account.models import Client
 
 
+class ProductSubcategory(models.Model):
+    """Implementing model subcategory of category .
+
+    Attributes:
+        _default_field_short_length (int):
+            It's the constant for `model.CharField`.
+
+        subcategory_name (models.CharField):
+            This field is for the name of the clothing category.
+    """
+
+    _default_field_short_length: int = 127
+
+    subcategory_name: models.CharField = models.CharField(
+        max_length=_default_field_short_length,
+    )
+
+    class Meta(AbstractUser.Meta):
+        """Metaclass for classes for media model definitions.
+
+        Attributes:
+            verbose_name (str):
+                A human-readable name for the object, singular.
+
+            verbose_name_plural (str):
+                The plural name for the object.
+
+            db_table (str):
+                It's the name of the database table.
+        """
+
+        db_table = 'product_subcategory'
+
+        verbose_name = 'Product subcategory'
+        verbose_name_plural = 'Product subcategories'
+
+    def __repr__(self):
+        """Magic method for print instance in console.
+
+        Returns:
+            String representation of an object instance.
+        """
+        return '<ProductSubcategory: {name}>'.format(
+            name=self.subcategory_name,
+        )
+
+    def __str__(self):
+        """Magic method for print instance.
+
+        Returns:
+            String representation of an object instance.
+        """
+        return 'Product Subcategory'
+
+
 class ProductCategory(models.Model):
     """Implementing model category of products.
 
@@ -33,6 +88,12 @@ class ProductCategory(models.Model):
     category_description = models.TextField(
         max_length=_default_field_medium_length,
         default='Category of products',
+    )
+
+    subcategory = models.ForeignKey(
+        to=ProductSubcategory,
+        on_delete=models.PROTECT,
+        null=True,
     )
 
     class Meta(AbstractUser.Meta):
@@ -189,7 +250,10 @@ class AudienceCategory(models.Model):
         max_length=_default_field_medium_length,
     )
 
-    categories = models.ManyToManyField(ProductCategory)
+    categories = models.ManyToManyField(
+        to=ProductCategory,
+        related_name='audience_categories',
+    )
 
     class Meta(AbstractUser.Meta):
         """Metaclass for classes for media model definitions.
@@ -222,53 +286,3 @@ class AudienceCategory(models.Model):
             String representation of an object instance.
         """
         return 'Audience Category'
-
-
-class ProductSubcategory(models.Model):
-    """Implementing model subcategory of category .
-
-    Attributes:
-        _default_field_short_length (int):
-            It's the constant for `model.CharField`.
-
-        subcategory_name (models.CharField):
-            This field is for the name of the clothing category.
-    """
-
-    _default_field_short_length: int = 127
-
-    subcategory_name: models.CharField = models.CharField(
-        max_length=_default_field_short_length,
-    )
-
-    class Meta(AbstractUser.Meta):
-        """Metaclass for classes for media model definitions.
-
-        Attributes:
-            verbose_name (str):
-                A human-readable name for the object, singular.
-
-            verbose_name_plural (str):
-                The plural name for the object.
-        """
-
-        verbose_name = 'Product subcategory'
-        verbose_name_plural = 'Product subcategories'
-
-    def __repr__(self):
-        """Magic method for print instance in console.
-
-        Returns:
-            String representation of an object instance.
-        """
-        return '<ProductSubcategory: {name}>'.format(
-            name=self.subcategory_name,
-        )
-
-    def __str__(self):
-        """Magic method for print instance.
-
-        Returns:
-            String representation of an object instance.
-        """
-        return 'Product Subcategory'

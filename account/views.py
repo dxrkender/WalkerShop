@@ -2,10 +2,19 @@
 from django.contrib.auth.views import LoginView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 
 from account.forms import ForgottenPasswordForm, LoginForm, SignUpForm
 from account.models import Client
+
+
+class ProfileView(TemplateView):
+    """View for show profile page.
+
+    Display the template `account/profile.html`.
+    """
+
+    template_name = 'account/profile.html'
 
 
 class ClientLoginView(LoginView):

@@ -23,12 +23,13 @@ from django.urls import path
 
 from account.views import (  # isort:skip
     ClientLoginView,
+    ProfileView,
     ResetPasswordView,
     SignUpView,
 )
 
 urlpatterns = [
-    path('', ClientLoginView.as_view(), name='account_index'),
+    path('', ProfileView.as_view(), name='account_index'),
     path('login/', ClientLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('signup/', SignUpView.as_view(), name='signup'),
